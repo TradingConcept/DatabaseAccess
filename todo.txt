@@ -18,11 +18,11 @@ echo "# DatabaseAccess" >> README.md
 git init
 git add README.md
 git commit -m "first commit"
-git remote add origin https://github.com/TradingConcept/develHector/DatabaseAccess.git
+git remote add origin https://github.com/TradingConcept/DatabaseAccess.git
 git push -u origin master
 
 …or push an existing repository from the command line
-git remote add origin https://github.com/TradingConcept/develHector/DatabaseAccess.git
+git remote add origin https://github.com/TradingConcept/DatabaseAccess.git
 git push -u origin master
 
 …or import code from another repository
@@ -36,5 +36,5 @@ https://stackoverflow.com/questions/35942754/how-to-save-username-and-password-i
 mkdir nombre
 cd nombre
 git init
-git remote add origin https://github.com/develHector/TradingConcept/DatabaseAccess.git
+git remote add origin https://github.com/TradingConcept/DatabaseAccess.git
 git pull origin master
