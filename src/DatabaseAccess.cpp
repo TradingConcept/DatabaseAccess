@@ -1,5 +1,6 @@
 #include <tuple>
 #include "DatabaseAccess.h"
+#include "MarketData.hpp"
 
 DatabaseAccessLib::DatabaseAccessLib(std::string DATABASE, std::string USERNAME, std::string PASSWORD, std::string HOST = "localhost", int PORT = 5432)
 {
@@ -9,18 +10,16 @@ DatabaseAccessLib::DatabaseAccessLib(std::string DATABASE, std::string USERNAME,
     ss << "host=" << HOST << " port=" << PORT << " dbname=" << DATABASE << " user=" << USERNAME << " password=" << PASSWORD;
     auto connection_string = ss.str();
 
-    this->conn = new pqxx::connection(connection_string);
-    this->work = new pqxx::work(*this->conn);
+    this->conn = new pqxx::connection(connection_string);    
 }
 
 DatabaseAccessLib::~DatabaseAccessLib()
 {
     if (this->conn != NULL)
     {
-        std::cout << "Cerrando conexión con MySQL" << std::endl;
+        std::cout << "Cerrando conexión con SQL" << std::endl;
         try
-        {
-            delete this->work;
+        {            
             delete this->conn;
         }
         catch (const std::exception &e)
@@ -35,15 +34,16 @@ bool DatabaseAccessLib::ExecuteCommand(const std::string SQL)
 
     try
     {
-        pqxx::result result = this->work->exec(SQL);
+        pqxx::work work(*this->conn);
+
+        pqxx::result result = work.exec(SQL);
+
+        work.commit();
 
         for (auto row : result)
         {
-            for (auto col : row)
-            {
-                std::cout  << col << "," ;
-            }
-            std::cout  << std::endl ;
+            MarketData::Emisoras emisora(row);
+            std::cout << emisora.Emisora << "." << emisora.Serie << " " << emisora.Cupon << " " << emisora.Tipo_Valor << std::endl ;
         }
         
     }

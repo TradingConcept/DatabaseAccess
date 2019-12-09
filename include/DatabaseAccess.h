@@ -1,3 +1,4 @@
+
 #pragma once
 #include <pqxx/pqxx>
 
@@ -11,8 +12,7 @@
 class DatabaseAccessLib
 {
     pqxx::connection *conn;
-    pqxx::work *work;
-
+    
 public:
 
     DatabaseAccessLib(std::string DATABASE, std::string USERNAME, std::string PASSWORD, std::string HOST, int PORT);
