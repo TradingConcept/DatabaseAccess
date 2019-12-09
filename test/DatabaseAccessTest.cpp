@@ -1,6 +1,6 @@
 #define BOOST_TEST_MODULE DatabaseAccessTest
 
-#include "DatabaseAccessLib.hpp"
+#include "DatabaseAccess.h"
 
 #define BOOST_TEST_DYN_LINK
 #include <boost/test/unit_test.hpp>

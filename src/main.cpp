@@ -1,13 +1,12 @@
 #include <iostream>
 
-#include "DatabaseAccessLib.hpp"
+#include "DatabaseAccess.h"
 
 int main(int argc, char *argv[])
 {
     std::cout << "Inicializando Servicio..." << std::endl;
-
-    DatabaseAccessLib database;
-    database.Run();
+    
+    DatabaseAccessLib::Run();
 
     std::cout << "Finalizando Servicio..." << std::endl;
 
