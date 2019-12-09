@@ -12,13 +12,15 @@
 class DatabaseAccessLib
 {
     pqxx::connection *conn;
+
+    bool TryExecuteCommand(const std::string &SQL, pqxx::result &result);
     
 public:
 
     DatabaseAccessLib(std::string DATABASE, std::string USERNAME, std::string PASSWORD, std::string HOST, int PORT);
     ~DatabaseAccessLib();
     
-    bool ExecuteCommand(const std::string);
+    bool ExecuteCommand(const std::string &SQL);
 
     static void Run();
 
