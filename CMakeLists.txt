@@ -27,5 +27,6 @@ find_package(Boost COMPONENTS system REQUIRED) # por el momento parece que sólo
 target_link_libraries (
     DatabaseAccess    
     pqxx
+    pthread
     ${Boost_SYSTEM_LIBRARY}        
     )

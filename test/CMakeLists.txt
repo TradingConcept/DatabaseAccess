@@ -6,6 +6,7 @@ set(TEST_SOURCES ${PROJECT_SOURCE_DIR}/test/DatabaseAccessTest.cpp ${PROJECT_SOU
 add_executable(test_main ${TEST_SOURCES})
 target_link_libraries(
     test_main 
+    pthread
     pqxx
     ${TEST_LIBS} 
     ${Boost_LIBRARIES})
